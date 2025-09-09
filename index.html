@@ -9,7 +9,9 @@
         <br>
         <div id="logdiv"></div>
         <script>
-            fileselect.onchange=()=>{
+            function sleep(t){return new Promise(r=>setTimeout(r,t))}
+
+            fileselect.onchange=async()=>{
                 const key=Number(filekey.value);
                 logdiv.innerText=`키: 0x${key.toString(16).padStart(2,'0')} (${key})\n\n`;
                 const files=fileselect.files;
@@ -26,6 +28,7 @@
                         uint8ArrayToDataURL(buf,file.type).then(x=>download(x,file.name));
                     };
                     reader.readAsArrayBuffer(file);
+                    await sleep(30);
                 }
             };
             function download(url,name) {
