@@ -28,7 +28,7 @@
                         uint8ArrayToDataURL(buf,file.type).then(x=>download(x,file.name));
                     };
                     reader.readAsArrayBuffer(file);
-                    await sleep(30);
+                    await sleep(100);
                 }
             };
             function download(url,name) {
