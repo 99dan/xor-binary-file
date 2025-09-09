@@ -4,11 +4,14 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <input type="file" id="fileselect" multiple/>
+        <div><input type="file" id="fileselect" multiple/></div>
+        <div>암호키 <input type="text" id="filekey" value="124"/></div>
+        <br>
         <div id="logdiv"></div>
         <script>
             fileselect.onchange=()=>{
-                const key=0x7c;
+                const key=Number(filekey.value);
+                logdiv.innerText=`키: 0x${key.toString(16).padStart(2,'0')} (${key})\n\n`;
                 const files=fileselect.files;
                 for(let i=0;i<files.length;i++){
                     const file=files[i];
